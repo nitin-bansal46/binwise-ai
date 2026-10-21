@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "binwise-ai"
+version = "0.1.0"
+description = "Grounded multilingual waste-sorting guidance with PyTorch and LangGraph"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = {text = "MIT"}
+authors = [{name = "Nitin Bansal"}]
+dependencies = [
+  "langgraph>=1.0,<2",
+  "numpy>=2.0,<3",
+  "pillow>=10,<13",
+  "pydantic>=2.10,<3",
+]
+
+[project.optional-dependencies]
+app = [
+  "accelerate>=1,<2",
+  "gradio>=5.49,<6",
+  "huggingface-hub>=0.30,<2",
+  "faiss-cpu>=1.9,<2",
+  "safetensors>=0.5,<1",
+  "sentence-transformers>=3,<6",
+  "torch>=2.8,<2.14",
+  "torchvision>=0.23,<0.29",
+  "transformers>=4.57,<6",
+]
+train = ["matplotlib>=3.9,<4", "scikit-learn>=1.6,<2", "tqdm>=4.67,<5"]
+dev = ["pytest>=8,<10", "ruff>=0.9,<1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+

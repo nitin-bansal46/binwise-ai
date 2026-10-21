@@ -1,0 +1,236 @@
+[
+  {
+    "rule_id": "zurich-cardboard",
+    "city": "zurich",
+    "material_class": "Cardboard",
+    "translations": {
+      "en": {"action": "Use Zurich's official cardboard collection.", "steps": ["Flatten the cardboard.", "Tie it into a compact bundle and place it out only at the published collection time."], "exceptions": ["Remove plastic, polystyrene and food-soiled parts; heavily soiled cardboard belongs in municipal waste."]},
+      "de": {"action": "Nutze die offizielle Kartonsammlung der Stadt Zürich.", "steps": ["Karton flach zusammenlegen.", "Zu einem kompakten Bündel verschnüren und nur zum publizierten Sammeltermin bereitstellen."], "exceptions": ["Kunststoff, Styropor und stark verschmutzte Teile entfernen; stark verschmutzter Karton gehört in den Hauskehricht."]},
+      "hi": {"action": "ज़्यूरिख की आधिकारिक कार्डबोर्ड संग्रह सेवा का उपयोग करें।", "steps": ["कार्डबोर्ड को चपटा करें।", "इसे छोटा बंडल बनाकर बांधें और केवल प्रकाशित संग्रह समय पर बाहर रखें।"], "exceptions": ["प्लास्टिक, थर्मोकोल और खाने से बहुत गंदे हिस्से हटाएं; बहुत गंदा कार्डबोर्ड नगर कचरे में जाता है।"]}
+    },
+    "source_title": "City of Zurich — Correct waste disposal in Zurich",
+    "source_url": "https://www.stadt-zuerich.ch/content/dam/web/de/umwelt-energie/entsorgung/dokumente/correct-waste-disposal-zurich.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "zurich-food-organics",
+    "city": "zurich",
+    "material_class": "Food Organics",
+    "translations": {
+      "en": {"action": "Use an available Zurich bio-waste collection or an approved compost option.", "steps": ["Keep organic waste free of packaging.", "Check the official guide or your property service for accepted items and collection dates."], "exceptions": ["Do not add plastic bags; items not accepted by the local bio-waste service must follow the official residual-waste guidance."]},
+      "de": {"action": "Nutze eine verfügbare Zürcher Bioabfallsammlung oder eine geeignete Kompostiermöglichkeit.", "steps": ["Bioabfall frei von Verpackungen halten.", "Akzeptierte Stoffe und Termine im offiziellen Leitfaden oder bei der Liegenschaftsverwaltung prüfen."], "exceptions": ["Keine Plastiksäcke verwenden; nicht akzeptierte Stoffe gemäss offizieller Kehrichtregel entsorgen."]},
+      "hi": {"action": "उपलब्ध ज़्यूरिख जैव-कचरा संग्रह या स्वीकृत कम्पोस्ट विकल्प का उपयोग करें।", "steps": ["जैव कचरे से पैकेजिंग हटाएं।", "स्वीकृत वस्तुओं और संग्रह तिथियों के लिए आधिकारिक गाइड या भवन सेवा देखें।"], "exceptions": ["प्लास्टिक बैग न डालें; अस्वीकृत वस्तुओं के लिए आधिकारिक शेष-कचरा निर्देश मानें।"]}
+    },
+    "source_title": "City of Zurich — Correct waste disposal in Zurich",
+    "source_url": "https://www.stadt-zuerich.ch/content/dam/web/de/umwelt-energie/entsorgung/dokumente/correct-waste-disposal-zurich.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "zurich-glass",
+    "city": "zurich",
+    "material_class": "Glass",
+    "translations": {
+      "en": {"action": "Take empty packaging glass to an official Zurich glass collection point and sort it by colour.", "steps": ["Empty containers and remove lids or caps.", "Use the colour-labelled opening; place uncertain colours with green glass."], "exceptions": ["Drinking glasses, mirrors, ceramics, window glass and light bulbs require separate disposal routes."]},
+      "de": {"action": "Leeres Verpackungsglas nach Farben getrennt zu einer offiziellen Zürcher Glassammelstelle bringen.", "steps": ["Behälter leeren und Deckel oder Verschlüsse entfernen.", "Die farblich markierte Öffnung benutzen; unklare Farben zum Grünglas geben."], "exceptions": ["Trinkgläser, Spiegel, Keramik, Fensterglas und Leuchtmittel brauchen andere Entsorgungswege."]},
+      "hi": {"action": "खाली पैकेजिंग कांच को ज़्यूरिख के आधिकारिक संग्रह बिंदु पर ले जाकर रंग के अनुसार छांटें।", "steps": ["कंटेनर खाली करें और ढक्कन हटाएं।", "रंग-चिह्नित छेद का उपयोग करें; अनिश्चित रंग को हरे कांच के साथ रखें।"], "exceptions": ["पीने के गिलास, दर्पण, सिरेमिक, खिड़की का कांच और बल्ब अलग तरीके से निपटाए जाते हैं।"]}
+    },
+    "source_title": "City of Zurich — Correct waste disposal in Zurich",
+    "source_url": "https://www.stadt-zuerich.ch/content/dam/web/de/umwelt-energie/entsorgung/dokumente/correct-waste-disposal-zurich.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "zurich-metal",
+    "city": "zurich",
+    "material_class": "Metal",
+    "translations": {
+      "en": {"action": "Take empty household metal packaging or small metal items to the designated Zurich collection route.", "steps": ["Empty and roughly clean the item.", "Follow the label at the collection point or the official collection calendar."], "exceptions": ["Electrical devices, batteries, pressurised containers and hazardous residues need specialist return routes."]},
+      "de": {"action": "Leere Metallverpackungen und kleine Metallgegenstände über den bezeichneten Zürcher Sammelweg entsorgen.", "steps": ["Gegenstand leeren und grob reinigen.", "Beschriftung der Sammelstelle oder offiziellen Sammelkalender beachten."], "exceptions": ["Elektrogeräte, Batterien, Druckbehälter und gefährliche Rückstände separat zurückgeben."]},
+      "hi": {"action": "खाली घरेलू धातु पैकेजिंग या छोटी धातु वस्तु को ज़्यूरिख के निर्धारित संग्रह माध्यम में दें।", "steps": ["वस्तु खाली करके हल्का साफ करें।", "संग्रह बिंदु के लेबल या आधिकारिक कैलेंडर का पालन करें।"], "exceptions": ["इलेक्ट्रॉनिक उपकरण, बैटरी, दबाव वाले कंटेनर और खतरनाक अवशेष विशेषज्ञ वापसी मार्ग में दें।"]}
+    },
+    "source_title": "City of Zurich — Correct waste disposal in Zurich",
+    "source_url": "https://www.stadt-zuerich.ch/content/dam/web/de/umwelt-energie/entsorgung/dokumente/correct-waste-disposal-zurich.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "zurich-miscellaneous-trash",
+    "city": "zurich",
+    "material_class": "Miscellaneous Trash",
+    "translations": {
+      "en": {"action": "Place ordinary non-recyclable household waste in an official Zurich refuse bag for municipal collection.", "steps": ["Remove recyclable or separately collected components first.", "Close the official bag and follow the local collection schedule."], "exceptions": ["Never include batteries, electronics, chemicals, medicines, bulky waste or other hazardous items."]},
+      "de": {"action": "Nicht verwertbaren Haushaltsabfall im offiziellen Zürcher Gebührensack für die Kehrichtabfuhr bereitstellen.", "steps": ["Wertstoffe und separat gesammelte Teile vorher entfernen.", "Offiziellen Sack schliessen und den lokalen Abfuhrplan beachten."], "exceptions": ["Batterien, Elektrogeräte, Chemikalien, Medikamente, Sperrgut und Sonderabfall nie beigeben."]},
+      "hi": {"action": "सामान्य गैर-पुनर्चक्रणीय घरेलू कचरा आधिकारिक ज़्यूरिख शुल्क-बैग में नगर संग्रह के लिए रखें।", "steps": ["पहले पुनर्चक्रण योग्य और अलग संग्रह वाली चीजें निकालें।", "आधिकारिक बैग बंद करें और स्थानीय समय-सारणी मानें।"], "exceptions": ["बैटरी, इलेक्ट्रॉनिक्स, रसायन, दवाइयां, भारी या खतरनाक कचरा कभी न डालें।"]}
+    },
+    "source_title": "City of Zurich — Correct waste disposal in Zurich",
+    "source_url": "https://www.stadt-zuerich.ch/content/dam/web/de/umwelt-energie/entsorgung/dokumente/correct-waste-disposal-zurich.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "zurich-paper",
+    "city": "zurich",
+    "material_class": "Paper",
+    "translations": {
+      "en": {"action": "Use Zurich's official paper collection.", "steps": ["Keep paper clean and dry.", "Tie it into a compact bundle and place it out at the published collection time."], "exceptions": ["Remove plastic wrapping; coated, laminated, sanitary or food-soiled paper is not ordinary paper recycling."]},
+      "de": {"action": "Nutze die offizielle Papiersammlung der Stadt Zürich.", "steps": ["Papier sauber und trocken halten.", "Zu einem kompakten Bündel verschnüren und zum publizierten Termin bereitstellen."], "exceptions": ["Plastikhüllen entfernen; beschichtetes, laminiertes, hygienisches oder stark verschmutztes Papier gehört nicht ins Altpapier."]},
+      "hi": {"action": "ज़्यूरिख की आधिकारिक कागज संग्रह सेवा का उपयोग करें।", "steps": ["कागज साफ और सूखा रखें।", "छोटा बंडल बांधकर प्रकाशित संग्रह समय पर बाहर रखें।"], "exceptions": ["प्लास्टिक आवरण हटाएं; लेपित, लैमिनेटेड, सैनिटरी या भोजन से गंदा कागज सामान्य पेपर रीसाइक्लिंग नहीं है।"]}
+    },
+    "source_title": "City of Zurich — Correct waste disposal in Zurich",
+    "source_url": "https://www.stadt-zuerich.ch/content/dam/web/de/umwelt-energie/entsorgung/dokumente/correct-waste-disposal-zurich.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "zurich-plastic",
+    "city": "zurich",
+    "material_class": "Plastic",
+    "translations": {
+      "en": {"action": "Return PET beverage bottles and other specifically accepted plastic containers through the labelled retailer or municipal collection route.", "steps": ["Empty the container and identify the plastic type or return label.", "Use only a collection point that explicitly accepts it."], "exceptions": ["Do not assume every plastic is recyclable; use the official Zurich residual-waste route when no accepted collection applies."]},
+      "de": {"action": "PET-Getränkeflaschen und ausdrücklich akzeptierte Kunststoffbehälter über die bezeichnete Verkaufs- oder Sammelstelle zurückgeben.", "steps": ["Behälter leeren und Kunststoffart oder Rücknahmesymbol prüfen.", "Nur eine Sammelstelle nutzen, die den Gegenstand ausdrücklich akzeptiert."], "exceptions": ["Nicht jeder Kunststoff ist recycelbar; ohne passenden Sammelweg gilt die offizielle Zürcher Kehrichtregel."]},
+      "hi": {"action": "PET पेय बोतलें और स्पष्ट रूप से स्वीकृत प्लास्टिक कंटेनर लेबल वाले खुदरा या नगर संग्रह बिंदु पर लौटाएं।", "steps": ["कंटेनर खाली करें और प्लास्टिक प्रकार या वापसी चिह्न देखें।", "केवल वही संग्रह बिंदु उपयोग करें जो इसे स्पष्ट रूप से स्वीकार करता हो।"], "exceptions": ["हर प्लास्टिक पुनर्चक्रण योग्य नहीं है; स्वीकृत मार्ग न हो तो ज़्यूरिख के आधिकारिक शेष-कचरा निर्देश मानें।"]}
+    },
+    "source_title": "City of Zurich — Correct waste disposal in Zurich",
+    "source_url": "https://www.stadt-zuerich.ch/content/dam/web/de/umwelt-energie/entsorgung/dokumente/correct-waste-disposal-zurich.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "zurich-textile-trash",
+    "city": "zurich",
+    "material_class": "Textile Trash",
+    "translations": {
+      "en": {"action": "Place clean, dry and reusable textiles in an official textile collection; use municipal waste only for unusable textiles when the guide allows it.", "steps": ["Wash or dry the item and close it in a collection bag.", "Use a labelled textile collection point or scheduled collection."], "exceptions": ["Wet, heavily soiled or contaminated textiles are not suitable for reuse collection."]},
+      "de": {"action": "Saubere, trockene und tragbare Textilien in die offizielle Textilsammlung geben; unbrauchbare Textilien gemäss Leitfaden entsorgen.", "steps": ["Textilien sauber und trocken in einen Sammelsack geben.", "Eine bezeichnete Sammelstelle oder Sammlung nutzen."], "exceptions": ["Nasse, stark verschmutzte oder kontaminierte Textilien eignen sich nicht für die Wiederverwendung."]},
+      "hi": {"action": "साफ, सूखे और दोबारा उपयोग योग्य कपड़े आधिकारिक वस्त्र संग्रह में दें; अनुपयोगी वस्त्र के लिए नगर गाइड मानें।", "steps": ["वस्तु साफ और सूखी करके संग्रह बैग बंद करें।", "लेबल वाला वस्त्र संग्रह बिंदु या निर्धारित संग्रह उपयोग करें।"], "exceptions": ["गीले, बहुत गंदे या दूषित कपड़े पुन: उपयोग संग्रह के योग्य नहीं हैं।"]}
+    },
+    "source_title": "City of Zurich — Correct waste disposal in Zurich",
+    "source_url": "https://www.stadt-zuerich.ch/content/dam/web/de/umwelt-energie/entsorgung/dokumente/correct-waste-disposal-zurich.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "zurich-vegetation",
+    "city": "zurich",
+    "material_class": "Vegetation",
+    "translations": {
+      "en": {"action": "Use Zurich's green-waste collection or an appropriate composting option where available.", "steps": ["Remove pots, ties, plastic and soil-heavy non-plant material.", "Prepare branches and garden material to the size and schedule specified locally."], "exceptions": ["Invasive plants, diseased material and large woody pieces may require special handling; check the official guide."]},
+      "de": {"action": "Nutze die Zürcher Grüngutsammlung oder eine geeignete Kompostiermöglichkeit, sofern verfügbar.", "steps": ["Töpfe, Schnüre, Kunststoff und pflanzenfremdes Material entfernen.", "Äste und Gartenmaterial nach lokalen Grössen- und Terminangaben vorbereiten."], "exceptions": ["Invasive Pflanzen, krankes Material und grosse Holzstücke können eine Sonderbehandlung benötigen."]},
+      "hi": {"action": "उपलब्ध होने पर ज़्यूरिख का हरित-कचरा संग्रह या उपयुक्त कम्पोस्ट विकल्प उपयोग करें।", "steps": ["गमले, डोरी, प्लास्टिक और पौधे से अलग सामग्री हटाएं।", "शाखाएं और बगीचे का कचरा स्थानीय आकार व समय निर्देश के अनुसार तैयार करें।"], "exceptions": ["आक्रामक पौधे, रोगग्रस्त सामग्री और बड़े लकड़ी के टुकड़ों को विशेष प्रबंधन चाहिए हो सकता है।"]}
+    },
+    "source_title": "City of Zurich — Correct waste disposal in Zurich",
+    "source_url": "https://www.stadt-zuerich.ch/content/dam/web/de/umwelt-energie/entsorgung/dokumente/correct-waste-disposal-zurich.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "gurugram-cardboard",
+    "city": "gurugram",
+    "material_class": "Cardboard",
+    "translations": {
+      "en": {"action": "Keep clean cardboard in the dry-waste stream for segregated collection or an authorised recycler.", "steps": ["Flatten it and remove food residue, tape and plastic where practical.", "Keep it dry and hand it over separately from wet waste."], "exceptions": ["Food-soiled or contaminated cardboard should follow current MCG residual-waste guidance."]},
+      "de": {"action": "Sauberen Karton getrennt als Trockenabfall sammeln und der getrennten Sammlung oder einem autorisierten Recycler übergeben.", "steps": ["Flachlegen und möglichst Speisereste, Klebeband und Kunststoff entfernen.", "Trocken halten und getrennt vom Nassabfall übergeben."], "exceptions": ["Stark verschmutzter Karton ist nach den aktuellen MCG-Hinweisen für Restabfall zu behandeln."]},
+      "hi": {"action": "साफ कार्डबोर्ड को सूखे कचरे में अलग रखकर पृथक संग्रह या अधिकृत पुनर्चक्रक को दें।", "steps": ["इसे चपटा करें और जहां संभव हो भोजन, टेप व प्लास्टिक हटाएं।", "सूखा रखें और गीले कचरे से अलग सौंपें।"], "exceptions": ["भोजन से बहुत गंदे कार्डबोर्ड के लिए वर्तमान MCG शेष-कचरा निर्देश मानें।"]}
+    },
+    "source_title": "CPCB — Solid Waste Management Rules, 2026",
+    "source_url": "https://swm.cpcb.gov.in/images/solid-waste-management-rules-2026.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "gurugram-food-organics",
+    "city": "gurugram",
+    "material_class": "Food Organics",
+    "translations": {
+      "en": {"action": "Keep food scraps separate as wet/biodegradable waste for home composting or the designated wet-waste collection.", "steps": ["Remove all plastic and other packaging.", "Use a covered container and hand it over separately from dry and domestic hazardous waste."], "exceptions": ["Follow your ward or housing society's current MCG collection arrangement; do not mix sanitary or hazardous waste."]},
+      "de": {"action": "Speisereste als nassen beziehungsweise biologisch abbaubaren Abfall für Eigenkompostierung oder die vorgesehene Nassabfallsammlung trennen.", "steps": ["Kunststoff und Verpackungen vollständig entfernen.", "In einem geschlossenen Behälter getrennt von Trocken- und gefährlichem Haushaltsabfall übergeben."], "exceptions": ["Aktuelle MCG-Regelung des Bezirks oder der Wohnanlage beachten; Hygiene- und Sonderabfall nicht beimischen."]},
+      "hi": {"action": "भोजन अवशेष को गीले/जैव-अपघटनीय कचरे के रूप में अलग रखें और घरेलू कम्पोस्ट या निर्धारित गीला-कचरा संग्रह में दें।", "steps": ["सारा प्लास्टिक और पैकेजिंग हटाएं।", "ढके पात्र में रखें और सूखे व घरेलू खतरनाक कचरे से अलग सौंपें।"], "exceptions": ["अपने वार्ड या सोसायटी की वर्तमान MCG व्यवस्था मानें; सैनिटरी या खतरनाक कचरा न मिलाएं।"]}
+    },
+    "source_title": "CPCB — Solid Waste Management Rules, 2026",
+    "source_url": "https://swm.cpcb.gov.in/images/solid-waste-management-rules-2026.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "gurugram-glass",
+    "city": "gurugram",
+    "material_class": "Glass",
+    "translations": {
+      "en": {"action": "Keep empty glass containers in the dry-waste stream and hand them to segregated collection or an authorised recycler.", "steps": ["Empty and rinse if needed.", "Wrap broken glass safely, label it, and tell the collector to prevent injury."], "exceptions": ["Bulbs, tube lights, mirrors and contaminated glass need their applicable specialist route."]},
+      "de": {"action": "Leere Glasbehälter als Trockenabfall getrennt sammeln und einer getrennten Sammlung oder einem autorisierten Recycler übergeben.", "steps": ["Leeren und bei Bedarf ausspülen.", "Scherben sicher verpacken, kennzeichnen und die sammelnde Person warnen."], "exceptions": ["Lampen, Leuchtstoffröhren, Spiegel und kontaminiertes Glas brauchen geeignete Sonderwege."]},
+      "hi": {"action": "खाली कांच कंटेनर सूखे कचरे में अलग रखकर पृथक संग्रह या अधिकृत पुनर्चक्रक को दें।", "steps": ["खाली करें और जरूरत हो तो धोएं।", "टूटा कांच सुरक्षित लपेटकर चिह्नित करें और संग्रहकर्ता को बताएं।"], "exceptions": ["बल्ब, ट्यूबलाइट, दर्पण और दूषित कांच के लिए उपयुक्त विशेषज्ञ मार्ग अपनाएं।"]}
+    },
+    "source_title": "CPCB — Solid Waste Management Rules, 2026",
+    "source_url": "https://swm.cpcb.gov.in/images/solid-waste-management-rules-2026.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "gurugram-metal",
+    "city": "gurugram",
+    "material_class": "Metal",
+    "translations": {
+      "en": {"action": "Keep clean household metal in the dry-waste stream for segregated collection or an authorised recycler.", "steps": ["Empty containers and remove food residue.", "Store sharp edges safely and hand the item over separately from wet waste."], "exceptions": ["Batteries, electronics, pressurised cans and chemically contaminated metal need authorised specialist handling."]},
+      "de": {"action": "Sauberes Haushaltsmetall als Trockenabfall getrennt sammeln und der getrennten Sammlung oder einem autorisierten Recycler übergeben.", "steps": ["Behälter leeren und Speisereste entfernen.", "Scharfe Kanten sichern und getrennt vom Nassabfall übergeben."], "exceptions": ["Batterien, Elektronik, Druckdosen und chemisch verunreinigtes Metall benötigen autorisierte Fachentsorgung."]},
+      "hi": {"action": "साफ घरेलू धातु को सूखे कचरे में अलग रखकर पृथक संग्रह या अधिकृत पुनर्चक्रक को दें।", "steps": ["कंटेनर खाली करके भोजन अवशेष हटाएं।", "तेज किनारे सुरक्षित करें और गीले कचरे से अलग सौंपें।"], "exceptions": ["बैटरी, इलेक्ट्रॉनिक्स, दबाव वाले डिब्बे और रसायन-दूषित धातु अधिकृत विशेषज्ञ को दें।"]}
+    },
+    "source_title": "CPCB — Solid Waste Management Rules, 2026",
+    "source_url": "https://swm.cpcb.gov.in/images/solid-waste-management-rules-2026.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "gurugram-miscellaneous-trash",
+    "city": "gurugram",
+    "material_class": "Miscellaneous Trash",
+    "translations": {
+      "en": {"action": "Keep non-recyclable domestic residual waste separate and use the current MCG-designated collection route.", "steps": ["First remove wet waste and recoverable dry materials.", "Contain the remainder securely and follow your ward or housing society's collection instructions."], "exceptions": ["Keep sanitary, biomedical, electronic, battery, chemical and construction waste separate under their applicable rules."]},
+      "de": {"action": "Nicht verwertbaren häuslichen Restabfall getrennt halten und über den aktuell von MCG vorgesehenen Sammelweg entsorgen.", "steps": ["Zuerst Nassabfall und verwertbare Trockenstoffe entfernen.", "Rest sicher verpacken und die Hinweise des Bezirks oder der Wohnanlage beachten."], "exceptions": ["Hygiene-, Medizin-, Elektro-, Batterie-, Chemie- und Bauabfall nach den jeweils geltenden Regeln separat halten."]},
+      "hi": {"action": "गैर-पुनर्चक्रणीय घरेलू शेष कचरा अलग रखें और वर्तमान MCG-निर्धारित संग्रह माध्यम का उपयोग करें।", "steps": ["पहले गीला कचरा और पुनर्प्राप्त सूखी सामग्री निकालें।", "बाकी को सुरक्षित रखें और वार्ड या सोसायटी के संग्रह निर्देश मानें।"], "exceptions": ["सैनिटरी, जैव-चिकित्सा, ई-कचरा, बैटरी, रसायन और निर्माण कचरा लागू नियमों के अनुसार अलग रखें।"]}
+    },
+    "source_title": "Municipal Corporation Gurugram — official portal",
+    "source_url": "https://mcg.gov.in/",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "gurugram-paper",
+    "city": "gurugram",
+    "material_class": "Paper",
+    "translations": {
+      "en": {"action": "Keep clean paper in the dry-waste stream for segregated collection or an authorised recycler.", "steps": ["Keep it dry and remove plastic covers or other non-paper parts.", "Bundle it separately from wet waste."], "exceptions": ["Greasy, sanitary, waxed or heavily laminated paper is generally not suitable for ordinary paper recycling."]},
+      "de": {"action": "Sauberes Papier als Trockenabfall getrennt sammeln und der getrennten Sammlung oder einem autorisierten Recycler übergeben.", "steps": ["Trocken halten und Kunststoffhüllen sowie Fremdstoffe entfernen.", "Getrennt vom Nassabfall bündeln."], "exceptions": ["Fettiges, hygienisches, gewachstes oder stark laminiertes Papier eignet sich meist nicht für normales Papierrecycling."]},
+      "hi": {"action": "साफ कागज को सूखे कचरे में अलग रखकर पृथक संग्रह या अधिकृत पुनर्चक्रक को दें।", "steps": ["सूखा रखें और प्लास्टिक कवर या गैर-कागजी हिस्से हटाएं।", "गीले कचरे से अलग बंडल बनाएं।"], "exceptions": ["चिकना, सैनिटरी, मोम-लेपित या बहुत लैमिनेटेड कागज सामान्य पेपर रीसाइक्लिंग योग्य नहीं होता।"]}
+    },
+    "source_title": "CPCB — Solid Waste Management Rules, 2026",
+    "source_url": "https://swm.cpcb.gov.in/images/solid-waste-management-rules-2026.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "gurugram-plastic",
+    "city": "gurugram",
+    "material_class": "Plastic",
+    "translations": {
+      "en": {"action": "Keep clean, empty recyclable plastic in the dry-waste stream for segregated collection or an authorised recycler.", "steps": ["Empty, dry and compact the item where safe.", "Keep different or labelled return items separate when the collector requests it."], "exceptions": ["Multilayered, contaminated or non-recyclable plastic must follow current MCG guidance; never burn plastic."]},
+      "de": {"action": "Sauberen, leeren und verwertbaren Kunststoff als Trockenabfall getrennt sammeln und einer getrennten Sammlung oder einem autorisierten Recycler übergeben.", "steps": ["Leeren, trocknen und wenn sicher platzsparend zusammendrücken.", "Verschiedene oder gekennzeichnete Rückgabeartikel auf Wunsch getrennt halten."], "exceptions": ["Mehrschichtige, verschmutzte oder nicht verwertbare Kunststoffe nach aktuellen MCG-Hinweisen behandeln; Kunststoff nie verbrennen."]},
+      "hi": {"action": "साफ, खाली और पुनर्चक्रण योग्य प्लास्टिक सूखे कचरे में अलग रखकर पृथक संग्रह या अधिकृत पुनर्चक्रक को दें।", "steps": ["खाली व सूखा करें और सुरक्षित हो तो दबाकर छोटा करें।", "संग्रहकर्ता के कहने पर अलग प्रकार या वापसी-चिह्न वाली वस्तु अलग रखें।"], "exceptions": ["बहु-परत, दूषित या गैर-पुनर्चक्रणीय प्लास्टिक के लिए वर्तमान MCG निर्देश मानें; प्लास्टिक कभी न जलाएं।"]}
+    },
+    "source_title": "CPCB — Solid Waste Management Rules, 2026",
+    "source_url": "https://swm.cpcb.gov.in/images/solid-waste-management-rules-2026.pdf",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "gurugram-textile-trash",
+    "city": "gurugram",
+    "material_class": "Textile Trash",
+    "translations": {
+      "en": {"action": "Keep clean reusable textiles separate for donation, reuse or an authorised textile/dry-waste collector.", "steps": ["Wash and dry reusable items, then pack them separately.", "For damaged textiles, ask the local dry-waste collector whether textile recovery is available."], "exceptions": ["Wet, contaminated, sanitary or medically soiled textiles need the applicable residual or specialist route."]},
+      "de": {"action": "Saubere, wiederverwendbare Textilien für Spende, Wiederverwendung oder eine autorisierte Textil-/Trockenabfallsammlung trennen.", "steps": ["Wiederverwendbare Stücke waschen, trocknen und separat verpacken.", "Bei beschädigten Textilien die lokale Trockenabfallsammlung nach Verwertung fragen."], "exceptions": ["Nasse, kontaminierte, hygienische oder medizinisch verschmutzte Textilien brauchen den passenden Rest- oder Sonderweg."]},
+      "hi": {"action": "साफ, दोबारा उपयोग योग्य वस्त्र दान, पुन: उपयोग या अधिकृत वस्त्र/सूखा-कचरा संग्रह के लिए अलग रखें।", "steps": ["पुन: उपयोग योग्य वस्त्र धोकर सुखाएं और अलग पैक करें।", "क्षतिग्रस्त वस्त्र के लिए स्थानीय सूखा-कचरा संग्रहकर्ता से पुनर्प्राप्ति पूछें।"], "exceptions": ["गीले, दूषित, सैनिटरी या चिकित्सकीय गंदे वस्त्र के लिए लागू शेष या विशेषज्ञ मार्ग अपनाएं।"]}
+    },
+    "source_title": "Municipal Corporation Gurugram — official portal",
+    "source_url": "https://mcg.gov.in/",
+    "last_verified": "2026-10-20"
+  },
+  {
+    "rule_id": "gurugram-vegetation",
+    "city": "gurugram",
+    "material_class": "Vegetation",
+    "translations": {
+      "en": {"action": "Keep garden vegetation separate as biodegradable waste for composting or the designated horticultural/wet-waste collection.", "steps": ["Remove plastic pots, bags, wire and other non-plant material.", "Cut or bundle branches as required by your ward or housing society."], "exceptions": ["Do not burn leaves or mix them with construction, hazardous or general dry waste; confirm local collection for large branches."]},
+      "de": {"action": "Gartenpflanzen als biologisch abbaubaren Abfall für Kompostierung oder die vorgesehene Garten-/Nassabfallsammlung trennen.", "steps": ["Kunststofftöpfe, Säcke, Draht und Fremdstoffe entfernen.", "Äste nach Vorgabe des Bezirks oder der Wohnanlage schneiden oder bündeln."], "exceptions": ["Laub nicht verbrennen und nicht mit Bau-, Sonder- oder allgemeinem Trockenabfall mischen; grosse Äste lokal abklären."]},
+      "hi": {"action": "बगीचे की वनस्पति को जैव-अपघटनीय कचरे के रूप में अलग रखें और कम्पोस्ट या निर्धारित बागवानी/गीला-कचरा संग्रह में दें।", "steps": ["प्लास्टिक गमले, बैग, तार और गैर-पौधा सामग्री हटाएं।", "वार्ड या सोसायटी के अनुसार शाखाएं काटें या बांधें।"], "exceptions": ["पत्ते न जलाएं और निर्माण, खतरनाक या सामान्य सूखे कचरे से न मिलाएं; बड़ी शाखाओं का स्थानीय संग्रह जांचें।"]}
+    },
+    "source_title": "CPCB — Solid Waste Management Rules, 2026",
+    "source_url": "https://swm.cpcb.gov.in/images/solid-waste-management-rules-2026.pdf",
+    "last_verified": "2026-10-20"
+  }
+]

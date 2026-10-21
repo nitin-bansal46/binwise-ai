@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+.env
+.idea/
+.vscode/
+
+# Data and generated artifacts
+data/raw/
+data/processed/
+artifacts/
+checkpoints/
+*.faiss
+*.safetensors
+*.pt
+*.pth
+
+# Notebook and OS noise
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
