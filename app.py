@@ -37,14 +37,19 @@ def format_result(response: WorkflowResponse) -> str:
     guidance = Guidance.model_validate(response.state["guidance"])
     predictions = response.state.get("predictions", [])
     confidence = predictions[0]["confidence"] if predictions else 1.0
-    prediction_text = (
-        f"**Material:** {guidance.material_class}  ·  **Model confidence:** {confidence:.1%}"
-    )
+    if response.state.get("forced_class"):
+        prediction_text = f"**Material:** {guidance.material_class}  ·  **Selection:** User correction"
+    else:
+        top_label = predictions[0]["label"] if predictions else guidance.material_class
+        prediction_text = (
+            f"**Material:** {guidance.material_class}  ·  "
+            f"**Model's first prediction:** {top_label} ({confidence:.1%})"
+        )
     steps = "\n".join(f"{index}. {step}" for index, step in enumerate(guidance.steps, 1))
     exceptions = "\n".join(f"- {item}" for item in guidance.exceptions) or "- None listed"
     notice = f"\n\n_{guidance.translation_notice}_" if guidance.translation_notice else ""
     fallback = (
-        "\n\n_The local language model was unavailable, so a reviewed fallback sentence was used._"
+        "\n\n_A reviewed fallback explanation was used._"
         if guidance.explanation_fallback_used
         else ""
     )

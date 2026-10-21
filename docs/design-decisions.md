@@ -41,10 +41,11 @@ The checkpointer is process memory only. Trace events contain node, elapsed mill
 metadata—never image bytes or the free-text note.
 
 On ZeroGPU, UI callbacks and the graph run in the main app process. Only the vision forward pass
-and Qwen generation are decorated with `spaces.GPU`. GPU callbacks can run in separate worker
+is decorated with `spaces.GPU`. GPU callbacks can run in separate worker
 processes, so decorating the entire workflow would lose a newly created checkpoint before the
-next confirmation request. Models load in the app process before entering the GPU worker; the
-embedding model and FAISS stay on CPU.
+next confirmation request. The vision model loads during startup before entering the GPU worker.
+The embedding model, FAISS and the small Qwen explanation model stay on CPU, avoiding a second
+GPU allocation for one explanation. Qwen uses two CPU threads and its instruction chat template.
 
 ## Retrieval boundary
 

@@ -8,23 +8,6 @@ import re
 from typing import Protocol
 
 from .schemas import FriendlyExplanation, Guidance
-from .gpu import gpu_task
-
-
-_PREPARED_PIPELINE = None
-
-
-@gpu_task(duration=20)
-def _generate_prepared(prompt: str) -> str:
-    # Inherit the packed startup model instead of serializing it as an argument.
-    if _PREPARED_PIPELINE is None:
-        raise RuntimeError("The explanation model has not been prepared")
-    return _PREPARED_PIPELINE(
-        prompt,
-        max_new_tokens=80,
-        do_sample=False,
-        return_full_text=False,
-    )[0]["generated_text"]
 
 
 FALLBACKS = {
@@ -65,20 +48,18 @@ class LocalQwenExplainer:
         self._pipeline = None
 
     def _load(self) -> None:
-        global _PREPARED_PIPELINE
         if self._pipeline is not None:
-            _PREPARED_PIPELINE = self._pipeline
             return
         import torch
         from transformers import pipeline
 
+        torch.set_num_threads(int(os.getenv("BINWISE_CPU_THREADS", "2")))
         self._pipeline = pipeline(
             "text-generation",
             model=self.model_name,
-            device=0 if torch.cuda.is_available() else -1,
-            dtype="auto",
+            device=-1,
+            dtype=torch.float32,
         )
-        _PREPARED_PIPELINE = self._pipeline
 
     @staticmethod
     def _extract_json(text: str) -> FriendlyExplanation:
@@ -101,7 +82,15 @@ class LocalQwenExplainer:
         try:
             self._load()
             for _ in range(2):
-                output = _generate_prepared(prompt)
+                output = self._pipeline(
+                    [
+                        {"role": "system", "content": "Follow the requested JSON schema exactly."},
+                        {"role": "user", "content": prompt},
+                    ],
+                    max_new_tokens=80,
+                    do_sample=False,
+                    return_full_text=False,
+                )[0]["generated_text"]
                 try:
                     parsed = self._extract_json(output)
                     if explanation_is_safe(parsed.explanation, guidance.language):
