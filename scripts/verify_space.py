@@ -60,7 +60,11 @@ def main() -> None:
         explanation = result[0].split("### Why it helps", 1)[1].split("**Official source:", 1)[0]
         if not any("\u0900" <= character <= "\u097f" for character in explanation):
             raise AssertionError("The Hindi explanation must use Devanagari script")
-    print("PASS: deployed analyze, confirmation when needed, and Hindi/city override.", flush=True)
+        result = client.submit(
+            handle_file(str(image_path)), "zurich", "de", "", "Glass", api_name="/override"
+        ).result(timeout=args.timeout)
+        check_response(result, expected_rule="zurich-glass")
+    print("PASS: deployed analyze, confirmation when needed, and Hindi/German city overrides.", flush=True)
 
 
 if __name__ == "__main__":
