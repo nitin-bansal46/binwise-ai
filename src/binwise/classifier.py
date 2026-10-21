@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 
 from .constants import CLASS_NAMES
+from .gpu import gpu_task
 from .schemas import Prediction
 
 
@@ -64,9 +65,15 @@ class VisionClassifier:
         self._transform = weights.transforms()
 
     def predict(self, image) -> list[Prediction]:
+        # Loading happens in the app process; only tensor computation uses a
+        # ZeroGPU worker. The LangGraph checkpointer never leaves the app.
+        self._load()
+        return self._predict_loaded(image)
+
+    @gpu_task(duration=15)
+    def _predict_loaded(self, image) -> list[Prediction]:
         import torch
 
-        self._load()
         tensor = self._transform(image.convert("RGB")).unsqueeze(0).to(self._device)
         with torch.inference_mode():
             probabilities = self._model(tensor).softmax(dim=1)[0]

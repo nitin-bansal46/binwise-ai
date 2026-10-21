@@ -44,7 +44,9 @@ class RuleRetriever:
             import faiss
             from sentence_transformers import SentenceTransformer
 
-            self._model = SentenceTransformer(self.model_name)
+            # The tiny corpus does not need GPU capacity. In particular,
+            # retrieval must not allocate CUDA outside a ZeroGPU worker.
+            self._model = SentenceTransformer(self.model_name, device="cpu")
             for city, candidates in self._city_rules.items():
                 vectors = self._model.encode(
                     [rule_text(rule) for rule in candidates],

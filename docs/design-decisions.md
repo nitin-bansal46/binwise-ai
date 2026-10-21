@@ -40,6 +40,12 @@ Images are serialized temporarily as PNG bytes because checkpoints require seria
 The checkpointer is process memory only. Trace events contain node, elapsed milliseconds and safe
 metadata—never image bytes or the free-text note.
 
+On ZeroGPU, UI callbacks and the graph run in the main app process. Only the vision forward pass
+and Qwen generation are decorated with `spaces.GPU`. GPU callbacks can run in separate worker
+processes, so decorating the entire workflow would lose a newly created checkpoint before the
+next confirmation request. Models load in the app process before entering the GPU worker; the
+embedding model and FAISS stay on CPU.
+
 ## Retrieval boundary
 
 The retriever constructs a separate FAISS index for each city. It selects the city's candidate set

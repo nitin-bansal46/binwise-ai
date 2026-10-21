@@ -13,14 +13,10 @@ sys.path.insert(0, str(ROOT / "src"))
 import gradio as gr
 
 try:
+    # Import before any model loads so ZeroGPU can enable CUDA emulation.
     import spaces
-except ImportError:  # Local development does not need the Spaces package.
-    class _Spaces:
-        @staticmethod
-        def GPU(*_args, **_kwargs):
-            return lambda function: function
-
-    spaces = _Spaces()
+except ImportError:
+    spaces = None
 
 from binwise.constants import CLASS_NAMES
 from binwise.schemas import Guidance
@@ -116,7 +112,6 @@ def response_outputs(response: WorkflowResponse):
     )
 
 
-@spaces.GPU(duration=60)
 def analyze(image, city, language, note, thread_id):
     if image is None:
         return error_outputs("Please upload or photograph one waste item.", thread_id)
@@ -133,7 +128,6 @@ def analyze(image, city, language, note, thread_id):
         return error_outputs(str(exc), thread_id)
 
 
-@spaces.GPU(duration=60)
 def confirm(selected, thread_id):
     if not selected or not thread_id:
         return error_outputs("The pending classification session was lost. Please analyse again.", thread_id)
@@ -143,7 +137,6 @@ def confirm(selected, thread_id):
         return error_outputs(str(exc), thread_id)
 
 
-@spaces.GPU(duration=60)
 def override(image, city, language, note, selected):
     if image is None or not selected:
         return error_outputs("Keep the image and choose a material before applying an override.", "")

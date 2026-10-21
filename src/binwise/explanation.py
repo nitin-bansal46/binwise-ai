@@ -8,6 +8,7 @@ import re
 from typing import Protocol
 
 from .schemas import FriendlyExplanation, Guidance
+from .gpu import gpu_task
 
 
 FALLBACKS = {
@@ -56,8 +57,17 @@ class LocalQwenExplainer:
             "text-generation",
             model=self.model_name,
             device_map="auto",
-            torch_dtype="auto",
+            dtype="auto",
         )
+
+    @gpu_task(duration=20)
+    def _generate(self, prompt: str) -> str:
+        return self._pipeline(
+            prompt,
+            max_new_tokens=80,
+            do_sample=False,
+            return_full_text=False,
+        )[0]["generated_text"]
 
     @staticmethod
     def _extract_json(text: str) -> FriendlyExplanation:
@@ -80,12 +90,7 @@ class LocalQwenExplainer:
         try:
             self._load()
             for _ in range(2):
-                output = self._pipeline(
-                    prompt,
-                    max_new_tokens=80,
-                    do_sample=False,
-                    return_full_text=False,
-                )[0]["generated_text"]
+                output = self._generate(prompt)
                 try:
                     parsed = self._extract_json(output)
                     if explanation_is_safe(parsed.explanation, guidance.language):

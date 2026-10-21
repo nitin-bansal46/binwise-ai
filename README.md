@@ -133,7 +133,8 @@ git remote add space https://huggingface.co/spaces/YOUR_HF_NAME/binwise-ai
 git push space main
 ```
 
-The `@spaces.GPU` callbacks request GPU only while inference runs. If ZeroGPU eligibility is not
+The `@spaces.GPU` model methods request GPU only while inference runs; the LangGraph checkpointer
+stays in the main app process so confirmation survives between requests. If ZeroGPU eligibility is not
 available, run the same UI on a regular CPU Space (slower), use the Colab demo, and publish the
 recorded walkthrough. See the current [ZeroGPU documentation](https://huggingface.co/docs/hub/main/en/spaces-zerogpu).
 
