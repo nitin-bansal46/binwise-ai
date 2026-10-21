@@ -10,6 +10,18 @@ from .gpu import gpu_task
 from .schemas import Prediction
 
 
+_PREPARED_CLASSIFIER = None
+
+
+@gpu_task(duration=15)
+def _classify_prepared(image) -> list[Prediction]:
+    # Reference the startup model globally. Passing a bound model as a worker
+    # argument causes its tensors to be serialized back to CPU by ZeroGPU.
+    if _PREPARED_CLASSIFIER is None:
+        raise RuntimeError("The vision model has not been prepared")
+    return _PREPARED_CLASSIFIER._forward(image)
+
+
 class ModelNotConfiguredError(RuntimeError):
     pass
 
@@ -47,7 +59,9 @@ class VisionClassifier:
         )
 
     def _load(self) -> None:
+        global _PREPARED_CLASSIFIER
         if self._model is not None:
+            _PREPARED_CLASSIFIER = self
             return
         import torch
         from safetensors.torch import load_file
@@ -65,15 +79,15 @@ class VisionClassifier:
         model.load_state_dict(state, strict=True)
         self._model = model.to(self._device).eval()
         self._transform = weights.transforms()
+        _PREPARED_CLASSIFIER = self
 
     def predict(self, image) -> list[Prediction]:
         # Loading happens in the app process; only tensor computation uses a
         # ZeroGPU worker. The LangGraph checkpointer never leaves the app.
         self._load()
-        return self._predict_loaded(image)
+        return _classify_prepared(image)
 
-    @gpu_task(duration=15)
-    def _predict_loaded(self, image) -> list[Prediction]:
+    def _forward(self, image) -> list[Prediction]:
         import torch
 
         tensor = self._transform(image.convert("RGB")).unsqueeze(0).to(self._device)
