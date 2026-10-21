@@ -170,6 +170,16 @@ class BinWiseWorkflow:
                     top_prediction=predictions[0]["label"],
                     confidence=predictions[0]["confidence"],
                     needs_confirmation=needs_confirmation,
+                    inference_backend=(
+                        "user_override"
+                        if forced
+                        else getattr(self.classifier, "last_inference_backend", "injected")
+                    ),
+                    fallback_reason=(
+                        None
+                        if forced
+                        else getattr(self.classifier, "last_fallback_reason", None)
+                    ),
                 )
             ],
         }

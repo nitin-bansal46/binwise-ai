@@ -47,6 +47,12 @@ next confirmation request. The vision model loads during startup before entering
 The embedding model, FAISS and the small Qwen explanation model stay on CPU, avoiding a second
 GPU allocation for one explanation. Qwen uses two CPU threads and its instruction chat template.
 
+The vision classifier also retains a separate CPU copy of the trained weights. If ZeroGPU cannot
+allocate a device or its worker fails, the same image is classified with those weights on CPU.
+This covers webcam and file uploads equally; it does not replace inference with a guessed label.
+The classification trace records `inference_backend` and `fallback_reason`. Actual model/input
+errors are propagated if the CPU retry also fails.
+
 ## Retrieval boundary
 
 The retriever constructs a separate FAISS index for each city. It selects the city's candidate set

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import copy
+import logging
 import os
 from pathlib import Path
 
@@ -11,6 +13,7 @@ from .schemas import Prediction
 
 
 _PREPARED_CLASSIFIER = None
+LOGGER = logging.getLogger(__name__)
 
 
 @gpu_task(duration=15)
@@ -30,8 +33,11 @@ class VisionClassifier:
     def __init__(self, weights_path: str | Path | None = None) -> None:
         self.weights_path = Path(weights_path) if weights_path else None
         self._model = None
+        self._cpu_model = None
         self._transform = None
         self._device = None
+        self.last_inference_backend = "not_run"
+        self.last_fallback_reason = None
 
     def _resolve_weights(self) -> Path:
         configured = self.weights_path or (
@@ -77,7 +83,14 @@ class VisionClassifier:
         # which ZeroGPU can emulate safely during module startup.
         state = load_file(str(self._resolve_weights()), device="cpu")
         model.load_state_dict(state, strict=True)
-        self._model = model.to(self._device).eval()
+        # Retain an independent CPU copy before packing CUDA tensors. A shared
+        # ZeroGPU worker may fail to obtain a device even when CUDA is advertised.
+        self._cpu_model = model.eval()
+        self._model = (
+            copy.deepcopy(model).to(self._device).eval()
+            if self._device.type == "cuda"
+            else self._cpu_model
+        )
         self._transform = weights.transforms()
         _PREPARED_CLASSIFIER = self
 
@@ -85,14 +98,37 @@ class VisionClassifier:
         # Loading happens in the app process; only tensor computation uses a
         # ZeroGPU worker. The LangGraph checkpointer never leaves the app.
         self._load()
-        return _classify_prepared(image)
+        self.last_fallback_reason = None
+        if self._device.type == "cpu":
+            self.last_inference_backend = "cpu"
+            return self._forward_cpu(image)
+        try:
+            predictions = _classify_prepared(image)
+            self.last_inference_backend = "gpu"
+            return predictions
+        except Exception as exc:
+            # Allocation failures can be surfaced by Spaces as RuntimeError or
+            # as a wrapped KeyError. Retry actual inference on the same trained
+            # weights; a genuine model/input failure will still raise on CPU.
+            self.last_inference_backend = "cpu_fallback"
+            self.last_fallback_reason = type(exc).__name__
+            LOGGER.warning(
+                "GPU inference failed (%s); using the trained CPU model.",
+                type(exc).__name__,
+            )
+            return self._forward_cpu(image)
 
-    def _forward(self, image) -> list[Prediction]:
+    def _forward_cpu(self, image) -> list[Prediction]:
+        return self._forward(image, model=self._cpu_model, device="cpu")
+
+    def _forward(self, image, *, model=None, device=None) -> list[Prediction]:
         import torch
 
-        tensor = self._transform(image.convert("RGB")).unsqueeze(0).to(self._device)
+        active_model = self._model if model is None else model
+        active_device = self._device if device is None else device
+        tensor = self._transform(image.convert("RGB")).unsqueeze(0).to(active_device)
         with torch.inference_mode():
-            probabilities = self._model(tensor).softmax(dim=1)[0]
+            probabilities = active_model(tensor).softmax(dim=1)[0]
             scores, indices = probabilities.topk(3)
         return [
             Prediction(label=CLASS_NAMES[index], confidence=float(score))

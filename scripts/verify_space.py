@@ -32,6 +32,7 @@ def main() -> None:
     parser.add_argument("--space", default="nitinbansal46/binwise-ai")
     parser.add_argument("--image", type=Path)
     parser.add_argument("--timeout", type=int, default=240)
+    parser.add_argument("--repeat", type=int, default=1, help="Repeat analysis to test later GPU allocations")
     args = parser.parse_args()
     client = Client(args.space, hf_token=get_token())
     with tempfile.TemporaryDirectory(prefix="binwise-verification-") as temporary:
@@ -41,17 +42,19 @@ def main() -> None:
             Image.new("RGB", (224, 224), (45, 120, 75)).save(image_path)
             print("Synthetic input: deployment check only, not an accuracy test.", flush=True)
 
-        started = time.perf_counter()
-        job = client.submit(handle_file(str(image_path)), "zurich", "en", "", api_name="/analyze")
-        result = job.result(timeout=args.timeout)
-        check_response(result)
-        if "Please confirm the material" in result[0]:
-            confirmation = result[1]
-            selected = confirmation["value"]
-            print("Resuming uncertain classification with", selected, flush=True)
-            result = client.submit(selected, api_name="/confirm").result(timeout=args.timeout)
+        for attempt in range(1, args.repeat + 1):
+            print(f"Analysis attempt {attempt}/{args.repeat}", flush=True)
+            started = time.perf_counter()
+            job = client.submit(handle_file(str(image_path)), "zurich", "en", "", api_name="/analyze")
+            result = job.result(timeout=args.timeout)
             check_response(result)
-        print(f"Analyze/confirm elapsed: {time.perf_counter() - started:.2f}s", flush=True)
+            if "Please confirm the material" in result[0]:
+                confirmation = result[1]
+                selected = confirmation["value"]
+                print("Resuming uncertain classification with", selected, flush=True)
+                result = client.submit(selected, api_name="/confirm").result(timeout=args.timeout)
+                check_response(result)
+            print(f"Analyze/confirm elapsed: {time.perf_counter() - started:.2f}s", flush=True)
 
         result = client.submit(
             handle_file(str(image_path)), "gurugram", "hi", "", "Glass", api_name="/override"
