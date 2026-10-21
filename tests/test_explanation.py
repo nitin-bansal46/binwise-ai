@@ -56,6 +56,20 @@ class ExplanationTests(unittest.TestCase):
         self.assertEqual(explainer.explain(self.guidance), (explanation, False))
         self.assertEqual(explainer._pipeline.calls, 2)
 
+    def test_english_instruction_cannot_bypass_hindi_guard(self):
+        guidance = self.guidance.model_copy(update={"language": "hi"})
+        unsafe = json.dumps({"explanation": "The correct response should be 'Do not collect these items.'"})
+        explainer = LocalQwenExplainer(enabled=True)
+        explainer._pipeline = FakePipeline([unsafe, unsafe])
+        self.assertEqual(explainer.explain(guidance), (FALLBACKS["hi"], True))
+
+    def test_hindi_explanation_requires_devanagari(self):
+        guidance = self.guidance.model_copy(update={"language": "hi"})
+        wrong_language = json.dumps({"explanation": "Sorting saves resources for future use."})
+        explainer = LocalQwenExplainer(enabled=True)
+        explainer._pipeline = FakePipeline([wrong_language, wrong_language])
+        self.assertEqual(explainer.explain(guidance), (FALLBACKS["hi"], True))
+
 
 if __name__ == "__main__":
     unittest.main()

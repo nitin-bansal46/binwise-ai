@@ -61,9 +61,11 @@ does not invent a disposal route.
 ## Why the LLM cannot choose the bin
 
 Municipal actions, preparation steps, exceptions, URLs and dates come directly from a validated
-RuleCard. Qwen receives those facts only to write one short environmental-benefit sentence, with a
-schema of one field. Parsing is retried once. Any import, load, parse or generation failure uses a
-reviewed language-specific sentence.
+RuleCard. Qwen receives the confirmed material and a reviewed general environmental-benefit
+sentence to paraphrase, with a schema of one field. It does not receive disposal instructions to
+rewrite. Parsing is retried once. Instruction terms are checked across all supported languages,
+and Hindi output must contain Devanagari script. Any import, load, parse or generation failure uses
+a reviewed language-specific sentence.
 
 After generation, `validate_grounding` compares action, steps, exceptions and source URL with the
 retrieved RuleCard. The LLM has no interface through which it can change those fields. This is

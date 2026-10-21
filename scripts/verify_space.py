@@ -57,6 +57,9 @@ def main() -> None:
             handle_file(str(image_path)), "gurugram", "hi", "", "Glass", api_name="/override"
         ).result(timeout=args.timeout)
         check_response(result, expected_rule="gurugram-glass")
+        explanation = result[0].split("### Why it helps", 1)[1].split("**Official source:", 1)[0]
+        if not any("\u0900" <= character <= "\u097f" for character in explanation):
+            raise AssertionError("The Hindi explanation must use Devanagari script")
     print("PASS: deployed analyze, confirmation when needed, and Hindi/city override.", flush=True)
 
 

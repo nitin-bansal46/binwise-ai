@@ -17,16 +17,26 @@ FALLBACKS = {
 }
 
 BANNED_GUIDANCE_TERMS = {
-    "en": (" bin", "collection", "dispose", "disposal", "zurich", "gurugram", "garbage"),
-    "de": ("tonne", "sammlung", "entsorg", "zürich", "zurich", "gurugram"),
-    "hi": ("डिब्ब", "संग्रह", "निपटान", "ज़्यूरिख", "ज्यूरिख", "गुरुग्राम"),
+    "en": (" bin", "collect", "dispose", "disposal", "zurich", "gurugram", "garbage"),
+    "de": ("tonne", "samml", "entsorg", "zürich", "zurich", "gurugram"),
+    "hi": ("डिब्ब", "संग्रह", "निपटान", "ज़्यूरिख", "ज्यूरिख", "गुरुग्राम", "डालें", "फेंक", "सौंपें"),
 }
 
 
 def explanation_is_safe(text: str, language: str) -> bool:
     """The generated sentence must not contain operational disposal guidance."""
     normalized = f" {text.casefold()}"
-    return not any(term in normalized for term in BANNED_GUIDANCE_TERMS[language])
+    if any(
+        term in normalized
+        for terms in BANNED_GUIDANCE_TERMS.values()
+        for term in terms
+    ):
+        return False
+    if re.search(r"\b(put|place|take|return|throw|deposit|must|should|don't|do not)\b", normalized):
+        return False
+    if language == "hi" and not any("\u0900" <= character <= "\u097f" for character in text):
+        return False
+    return True
 
 
 class Explainer(Protocol):
@@ -72,12 +82,14 @@ class LocalQwenExplainer:
         fallback = FALLBACKS[guidance.language]
         if not self.enabled:
             return fallback, True
+        language_name = {"en": "English", "de": "German", "hi": "Hindi (Devanagari script)"}[guidance.language]
         prompt = (
             "You are a concise environmental educator. Return JSON only as "
             '{"explanation":"one friendly positive sentence"}. '
-            f"Write in language code {guidance.language}. The verified action is: "
-            f"{guidance.action} Do not mention bins, collection methods, cities, "
-            "or add instructions. Explain only the general environmental benefit."
+            f"Write in {language_name}. The material is {guidance.material_class}. "
+            f"Paraphrase only this reviewed environmental benefit: {fallback} "
+            "Do not mention bins, collection methods, cities, or add instructions. "
+            "Explain only the general environmental benefit."
         )
         try:
             self._load()
