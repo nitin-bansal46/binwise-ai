@@ -51,12 +51,13 @@ class LocalQwenExplainer:
     def _load(self) -> None:
         if self._pipeline is not None:
             return
+        import torch
         from transformers import pipeline
 
         self._pipeline = pipeline(
             "text-generation",
             model=self.model_name,
-            device_map="auto",
+            device=0 if torch.cuda.is_available() else -1,
             dtype="auto",
         )
 

@@ -59,7 +59,9 @@ class VisionClassifier:
         model.classifier[-1] = torch.nn.Linear(
             model.classifier[-1].in_features, len(CLASS_NAMES)
         )
-        state = load_file(str(self._resolve_weights()), device=str(self._device))
+        # Safetensors loads on CPU; PyTorch handles the subsequent transfer,
+        # which ZeroGPU can emulate safely during module startup.
+        state = load_file(str(self._resolve_weights()), device="cpu")
         model.load_state_dict(state, strict=True)
         self._model = model.to(self._device).eval()
         self._transform = weights.transforms()

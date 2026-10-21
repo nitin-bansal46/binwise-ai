@@ -235,6 +235,23 @@ def build_demo() -> gr.Blocks:
     return demo
 
 
+def prepare_models() -> None:
+    """ZeroGPU emulates CUDA in the startup thread, before Gradio workers run."""
+    if not (os.getenv("BINWISE_MODEL_REPO") or os.getenv("BINWISE_WEIGHTS_PATH")):
+        return
+    current = service()
+    print("Preparing trained vision model...", flush=True)
+    current.workflow.classifier._load()
+    if current.workflow.explainer.enabled:
+        try:
+            print("Preparing local Qwen explanation model...", flush=True)
+            current.workflow.explainer._load()
+        except (ImportError, OSError, RuntimeError, ValueError) as exc:
+            print(f"Qwen unavailable; using deterministic explanations: {exc}", flush=True)
+            current.workflow.explainer.enabled = False
+
+
+prepare_models()
 demo = build_demo()
 
 if __name__ == "__main__":

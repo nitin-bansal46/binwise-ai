@@ -8,6 +8,10 @@ sdk_version: 5.49.1
 app_file: app.py
 pinned: false
 python_version: 3.12.12
+models:
+  - nitinbansal46/binwise-realwaste-mobilenet
+  - Qwen/Qwen2.5-0.5B-Instruct
+  - sentence-transformers/all-MiniLM-L6-v2
 ---
 
 # BinWise AI — “Where Does This Go?”
@@ -17,8 +21,23 @@ guidance for **Zurich** or **Gurugram** in English, German, or Hindi. It is desi
 explainable AI-engineering portfolio project: the vision model predicts, a person confirms
 uncertain cases, and deterministic municipal rules—not an LLM—decide the disposal action.
 
-> Project status: the application, training pipeline, workflow, rule corpus and tests are ready.
-> Model metrics and the public Space URL should be added only after the Colab training run.
+[Live demo](https://huggingface.co/spaces/nitinbansal46/binwise-ai) ·
+[Trained model and evaluation artifacts](https://huggingface.co/nitinbansal46/binwise-realwaste-mobilenet) ·
+[Train in Colab](https://colab.research.google.com/github/nitin-bansal46/binwise-ai/blob/main/notebooks/train_realwaste_colab.ipynb)
+
+## Measured test results
+
+Results from the uploaded model's held-out test report:
+
+| Metric | Measured value |
+| --- | ---: |
+| Accuracy | 83.73% |
+| Macro-F1 | 0.8511 |
+| Top-three accuracy | 97.90% |
+
+See the [full metrics and per-class report](https://huggingface.co/nitinbansal46/binwise-realwaste-mobilenet/blob/main/metrics.json)
+and [confusion matrix](https://huggingface.co/nitinbansal46/binwise-realwaste-mobilenet/blob/main/confusion_matrix.png).
+These model metrics do not measure recognition of hazardous waste or guarantee disposal correctness.
 
 ## Why this is more than a chatbot
 
@@ -65,7 +84,7 @@ The UI requires fine-tuned weights. Configure either a local file or a Hugging F
 set BINWISE_WEIGHTS_PATH=artifacts/model/mobilenet_v3_small.safetensors
 
 # or Hugging Face Hub (PowerShell)
-$env:BINWISE_MODEL_REPO="your-name/binwise-realwaste-mobilenet"
+$env:BINWISE_MODEL_REPO="nitinbansal46/binwise-realwaste-mobilenet"
 python app.py
 ```
 
@@ -83,7 +102,7 @@ python scripts/download_realwaste.py
 python scripts/create_split.py data/raw/realwaste
 python scripts/train.py --batch-size 64
 huggingface-cli login
-python scripts/upload_model.py YOUR_HF_NAME/binwise-realwaste-mobilenet
+python scripts/upload_model.py nitinbansal46/binwise-realwaste-mobilenet
 ```
 
 Training runs in two explicit phases:
@@ -129,7 +148,7 @@ and trace privacy. The split test also verifies that one image cannot occur in m
 3. Keep GitHub canonical and add the Space as a second remote:
 
 ```bash
-git remote add space https://huggingface.co/spaces/YOUR_HF_NAME/binwise-ai
+git remote add space https://huggingface.co/spaces/nitinbansal46/binwise-ai
 git push space main
 ```
 
@@ -169,9 +188,9 @@ docs/                          design rationale, demo and interview practice
 
 ## Portfolio completion checklist
 
-- [ ] Train in Colab and retain the measured test report.
-- [ ] Confirm test macro-F1; investigate classes if it is below the 0.80 target.
-- [ ] Upload weights/model card to the Hub and configure the Space.
+- [x] Train in Colab and retain the measured test report.
+- [x] Confirm test macro-F1; measured 0.8511 exceeds the 0.80 target.
+- [x] Upload weights/model card to the Hub and configure the Space.
 - [ ] Run 20 representative images and record end-to-end p95 excluding the external queue.
 - [ ] Add the confusion matrix and one trace screenshot here.
 - [ ] Record the three-minute walkthrough in [`docs/demo-script.md`](docs/demo-script.md).
